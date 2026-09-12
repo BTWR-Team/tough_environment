@@ -35,12 +35,9 @@ public class PlayerEffectsManager {
      * Brings the player's block break speed modifier in line with the state they should be in right
      * now.
      * <p>
-     * This is deliberately stateless. The manager is a singleton shared by every player on the
-     * server, so remembering the last applied state in a field made one player's tick decide
-     * whether another player's modifier was updated - on a server that left players mining at the
-     * wrong speed until something else happened to knock the state back into place. The wanted
-     * state is instead derived from the player and compared against what is actually on the
-     * attribute, which makes the update idempotent and self-correcting.
+     * This is deliberately stateless. The wanted
+     * state is derived from the player and compared against what is actually on the
+     * attribute.
      */
     private void updateAttributes(PlayerEntity player) {
         EntityAttributeInstance blockBreakSpeedAttribute = player.getAttributeInstance(EntityAttributes.PLAYER_BLOCK_BREAK_SPEED);

@@ -65,4 +65,5 @@ public class LavaPillowBlock extends Block {
 
         return false;
     }
+
 }

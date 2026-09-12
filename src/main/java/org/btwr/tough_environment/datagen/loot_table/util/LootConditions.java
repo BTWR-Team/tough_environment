@@ -10,7 +10,6 @@ import net.minecraft.registry.tag.TagKey;
 import static org.btwr.shared_library.api.tag.BTWRConventionalTags.Items.*;
 
 public class LootConditions {
-
     public static final LootCondition.Builder WITH_PICKAXE_FULLY_HARVESTS = withMatchingToolTag(PICKAXES_HARVEST_FULL_BLOCK);
     public static final LootCondition.Builder WITH_ADVANCED_PICKAXES = withMatchingToolTag(ADVANCED_PICKAXES);
     public static final LootCondition.Builder WITH_MODERN_PICKAXES = withMatchingToolTag(MODERN_PICKAXES);
@@ -29,5 +28,4 @@ public class LootConditions {
     private static LootCondition.Builder withMatchingToolTag(TagKey<Item> itemTag) {
         return MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(itemTag));
     }
-
 }

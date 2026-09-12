@@ -7,6 +7,7 @@ import net.minecraft.block.FluidBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.btwr.tough_environment.block.ModBlocks;
+import org.btwr.tough_environment.config.TEModConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -20,6 +21,14 @@ public abstract class FluidBlockMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)Z", ordinal = 0)
     )
     private boolean redirectCobblestoneToLavaPillow(World instance, BlockPos pos, BlockState state) {
-        Block block = instance.getFluidState(pos).isStill() ? Blocks.OBSIDIAN : ModBlocks.LAVA_PILLOW;
+        boolean isStill = instance.getFluidState(pos).isStill();
+        boolean lavaPillowEnabled = TEModConfig.lavaPillowsEnabled.get();
+
+        if (!lavaPillowEnabled) {
+           return instance.setBlockState(pos, state);
+        }
+
+        Block block = isStill ? Blocks.OBSIDIAN : ModBlocks.LAVA_PILLOW;
+
         return instance.setBlockState(pos, block.getDefaultState());
     }}

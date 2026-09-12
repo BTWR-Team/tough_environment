@@ -4,7 +4,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.StairShape;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -83,7 +82,8 @@ public class LooseStairsBlock extends MortarReceiverBlock implements Waterloggab
                 .with(FACING, Direction.NORTH))
                 .with(HALF, BlockHalf.BOTTOM))
                 .with(SHAPE, StairShape.STRAIGHT))
-                .with(WATERLOGGED, false)));
+                .with(WATERLOGGED, false))
+        );
         this.baseBlock = baseBlockState.getBlock();
         this.baseBlockState = baseBlockState;
     }
@@ -186,8 +186,10 @@ public class LooseStairsBlock extends MortarReceiverBlock implements Waterloggab
     }
 
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos)
-    {
+    public BlockState getStateForNeighborUpdate(
+            BlockState state, Direction direction, BlockState neighborState,
+            WorldAccess world, BlockPos pos, BlockPos neighborPos
+    ) {
         super.getStateForNeighborUpdate(state,direction,neighborState,world,pos,neighborPos);
 
         if (state.get(WATERLOGGED)) {
@@ -299,6 +301,5 @@ public class LooseStairsBlock extends MortarReceiverBlock implements Waterloggab
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
         return false;
     }
-
 
 }

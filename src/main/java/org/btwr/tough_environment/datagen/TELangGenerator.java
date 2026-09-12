@@ -22,6 +22,10 @@ public class TELangGenerator extends FabricLanguageProvider {
         this.generateConfigTranslations(tb);
         this.generateBlockTranslations(tb);
         this.generateItemTranslations(tb);
+
+        tb.add("subtitles.tough_environment.stone_cracking", "Stone cracks");
+        tb.add("subtitles.tough_environment.apply_mortar", "Mortar applied");
+        tb.add("subtitles.tough_environment.unfired_brick_destroyed", "Unfired brick destroyed");
     }
 
     private void generateConfigTranslations(TranslationBuilder tb) {

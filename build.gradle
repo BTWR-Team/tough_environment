@@ -58,19 +58,18 @@ dependencies {
     }
 
     // Better With Time
-    modCompileOnly "maven.modrinth:better-with-time:${project.bwt_version}"
+    //modCompileOnly "maven.modrinth:better-with-time:${project.bwt_version}"
 
     // Sturdy Trees (for testing chisels)
     //modLocalRuntime "maven.modrinth:sturdy-trees:${project.sturdy_trees_version}"
 
     // Self Sustainable
     //modCompileOnly "maven.modrinth:self-sustainable:${project.self_sustainable_version}"
-    modLocalRuntime "maven.modrinth:self-sustainable:${project.self_sustainable_version}"
+    //modLocalRuntime "maven.modrinth:self-sustainable:${project.self_sustainable_version}"
 
     // EMI
     modCompileOnly "dev.emi:emi-fabric:${emi_version}:api"
     modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
-
 
 }
 

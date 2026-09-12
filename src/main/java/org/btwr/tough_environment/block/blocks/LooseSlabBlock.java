@@ -99,16 +99,14 @@ public class LooseSlabBlock extends MortarReceiverBlock implements Waterloggable
         if (blockState.isOf(this)) {
             // If the block is the same as the LooseSlabBlock, set it to double slab
             return this.getDefaultState().with(TYPE, SlabType.DOUBLE).with(WATERLOGGED, false);
-        }
-        else {
+        } else {
             // Otherwise, handle placement based on the direction and hit position
             boolean isTopHalf = ctx.getHitPos().y - blockPos.getY() > 0.5;
 
             if (direction == Direction.DOWN || isTopHalf) {
                 // If placing on the bottom part or top half, place as a bottom slab
                 return this.getDefaultState().with(TYPE, SlabType.BOTTOM).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-            }
-            else {
+            } else {
                 // If placing on the top part, place as a bottom slab instead
                 return this.getDefaultState().with(TYPE, SlabType.BOTTOM).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
             }
@@ -125,16 +123,13 @@ public class LooseSlabBlock extends MortarReceiverBlock implements Waterloggable
                 Direction direction = context.getSide();
                 if (slabType == SlabType.BOTTOM) {
                     return direction == Direction.UP || bl && direction.getAxis().isHorizontal();
-                }
-                else {
+                } else {
                     return direction == Direction.DOWN || !bl && direction.getAxis().isHorizontal();
                 }
-            }
-            else {
+            } else {
                 return true;
             }
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -151,9 +146,10 @@ public class LooseSlabBlock extends MortarReceiverBlock implements Waterloggable
         return state.get(TYPE) != SlabType.DOUBLE && Waterloggable.super.canFillWithFluid(player, world, pos, state, fluid);
     }
 
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState,
-                                                WorldAccess world, BlockPos pos, BlockPos neighborPos)
-    {
+    public BlockState getStateForNeighborUpdate(
+            BlockState state, Direction direction, BlockState neighborState,
+            WorldAccess world, BlockPos pos, BlockPos neighborPos
+    ) {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }

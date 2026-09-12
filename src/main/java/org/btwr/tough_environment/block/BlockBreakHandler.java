@@ -56,7 +56,6 @@ public class BlockBreakHandler {
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
-
     }
 
     public void setStateForDirt(World world, BlockPos pos, BlockState state, PlayerEntity player) {

@@ -34,11 +34,20 @@ public class TEModConfig {
                     .comment("Highly discourages breaking of stone type 'strata' blocks which you don't have the correct tool for.\nThis also includes other stone-like blocks like Obsidian, etc..")
                     .build();
 
+    public static final ConfigSetting<Boolean> lavaPillowsEnabled =
+            ConfigBuilder.booleanSetting("lavaPillowsEnabled")
+                    .defaultValue(true)
+                    .comment("Toggles water creating lava pillows instead of cobblestone when touching flowing lava")
+                    .build();
+
     static {
         CONFIG = new ConfigGroup(String.format("%s/%s_common.toml", MOD_ID, MOD_ID));
+
         CONFIG.add(hcPlayerMiningSpeed);
         CONFIG.add(stratificationToughness);
         CONFIG.add(strataBasedBlockBreakingRestrictions);
+        CONFIG.add(lavaPillowsEnabled);
+
         TomlConfigManager.registerGroup(CONFIG); // auto init/load/save
     }
 
