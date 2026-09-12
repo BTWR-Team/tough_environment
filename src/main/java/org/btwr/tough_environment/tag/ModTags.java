@@ -92,7 +92,7 @@ public class ModTags {
 
         // Special mineable tags per tier (wooden, stone, etc.), so we can specify additional restrictions
         public static final TagKey<Block> WOODEN_PRIMITIVE = register("mineable/wooden_primitive");
-        public static final TagKey<Block> STONE_PRIMITIVE = register("mineable/wooden_primitive");
+        public static final TagKey<Block> STONE_PRIMITIVE = register("mineable/stone_primitive");
         public static final TagKey<Block> GOLD_MODERN = register("mineable/gold_modern");
         public static final TagKey<Block> IRON_MODERN = register("mineable/iron_modern");
         public static final TagKey<Block> DIAMOND_MODERN = register("mineable/diamond_modern");

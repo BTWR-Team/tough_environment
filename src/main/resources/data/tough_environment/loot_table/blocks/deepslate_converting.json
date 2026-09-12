@@ -84,7 +84,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tough_environment:stone_brick",
+          "name": "tough_environment:stone_brick_2",
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
@@ -101,6 +101,32 @@
           "condition": "minecraft:match_tool",
           "predicate": {
             "items": "#c:modern_chisels"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tough_environment:stone_brick_2",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "tough_environment:deepslate_converting",
+              "properties": {
+                "break_level": "3"
+              }
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "items": "#c:advanced_chisels"
           }
         }
       ]
@@ -405,25 +431,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tough_environment:pile_gravel",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ],
-          "conditions": [
-            {
-              "condition": "minecraft:block_state_property",
-              "block": "tough_environment:deepslate_converting",
-              "properties": {
-                "break_level": "9"
-              }
-            }
-          ]
         }
       ],
       "conditions": [
@@ -453,7 +460,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "tough_environment:cobblestone_loose",
+          "name": "tough_environment:cobbled_deepslate_loose",
           "conditions": [
             {
               "condition": "minecraft:block_state_property",

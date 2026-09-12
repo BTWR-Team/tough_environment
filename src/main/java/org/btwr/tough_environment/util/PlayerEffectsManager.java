@@ -1,6 +1,7 @@
 package org.btwr.tough_environment.util;
 
 import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import org.btwr.tough_environment.config.TEModConfig;
@@ -16,8 +17,6 @@ public class PlayerEffectsManager {
         return INSTANCE;
     }
 
-    private BlockBreakSpeedManager.SpeedState currentSpeedState = BlockBreakSpeedManager.SpeedState.NORMAL;
-
     // gets called in PlayerEntity only
     public void onTick(PlayerEntity player) {
     }
@@ -32,39 +31,42 @@ public class PlayerEffectsManager {
         return (!player.isCreative() && !player.isSpectator() && !player.isDead());
     }
 
+    /**
+     * Brings the player's block break speed modifier in line with the state they should be in right
+     * now.
+     * <p>
+     * This is deliberately stateless. The wanted
+     * state is derived from the player and compared against what is actually on the
+     * attribute.
+     */
     private void updateAttributes(PlayerEntity player) {
         EntityAttributeInstance blockBreakSpeedAttribute = player.getAttributeInstance(EntityAttributes.PLAYER_BLOCK_BREAK_SPEED);
 
-        // Get the player's current block break speed state
-        BlockBreakSpeedManager.SpeedState newSpeedState = BlockBreakSpeedManager.SpeedState.getStateFrom(player);
-
-        if (blockBreakSpeedAttribute != null) {
-            // Update GenericState modifier
-            if (newSpeedState != currentSpeedState) {
-                blockBreakSpeedAttribute.removeModifier(currentSpeedState.getModifier());
-                blockBreakSpeedAttribute.addPersistentModifier(newSpeedState.getModifier());
-            }
-
-            // Revert if player shouldn't be affected at this time
-            if (!TEModConfig.hcPlayerMiningSpeed.get()) {
-                blockBreakSpeedAttribute.removeModifier(currentSpeedState.getModifier());
-            } else {
-                if (!blockBreakSpeedAttribute.hasModifier(currentSpeedState.getModifier().id()))
-                    blockBreakSpeedAttribute.addPersistentModifier(newSpeedState.getModifier());
-            }
-
-            /**
-            // Revert if player shouldn't be affected at this time
-            if (!stratificationToughness.get()) {
-                blockBreakSpeedAttribute.removeModifier(currentSpeedState.getModifier());
-            } else {
-                if (!blockBreakSpeedAttribute.hasModifier(currentSpeedState.getModifier().id()))
-                    blockBreakSpeedAttribute.addPersistentModifier(newSpeedState.getModifier());
-            }
-             **/
+        if (blockBreakSpeedAttribute == null) {
+            return;
         }
 
-        currentSpeedState = newSpeedState;
+        // Revert if the player shouldn't be affected at this time
+        if (!TEModConfig.hcPlayerMiningSpeed.get()) {
+            blockBreakSpeedAttribute.removeModifier(BlockBreakSpeedManager.SPEED_MODIFIER_ID);
+            return;
+        }
+
+        EntityAttributeModifier wanted = BlockBreakSpeedManager.SpeedState.getStateFrom(player).getModifier();
+        EntityAttributeModifier applied = blockBreakSpeedAttribute.getModifier(BlockBreakSpeedManager.SPEED_MODIFIER_ID);
+
+        if (applied != null) {
+            // Both states share one id, so only the value tells us which one is currently applied.
+            if (applied.value() == wanted.value() && applied.operation() == wanted.operation()) {
+                return;
+            }
+            blockBreakSpeedAttribute.removeModifier(BlockBreakSpeedManager.SPEED_MODIFIER_ID);
+        }
+
+        // Temporary rather than persistent: the value is derived from what the player is holding and
+        // is recomputed every tick, so saving it to the player's data only risks it outliving the
+        // config that asked for it.
+        blockBreakSpeedAttribute.addTemporaryModifier(wanted);
     }
 
 }

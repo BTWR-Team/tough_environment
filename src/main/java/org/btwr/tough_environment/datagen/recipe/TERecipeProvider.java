@@ -175,7 +175,7 @@ public class TERecipeProvider extends TEBaseRecipeProvider {
         // TODO: insert level 1 (mantle) here when added!
         offerLesserDropsFromStairs(exporter, ModItems.SMALL_STONE_2, 6, ModBlocks.COBBLED_DEEPSLATE_LOOSE_STAIRS, IdUtils.ofTE("small_stone_2_from_stairs_cobbled_deepslate_loose"));
         offerLesserDropsFromStairs(exporter, ModItems.SHARD_ANDESITE, 6, ModBlocks.ANDESITE_LOOSE_STAIRS, IdUtils.ofTE("shard_andesite_from_stairs_andesite_loose"));
-        offerLesserDropsFromStairs(exporter, ModItems.SHARD_ANDESITE, 6, ModBlocks.GRANITE_LOOSE_STAIRS, IdUtils.ofTE("shard_andesite_from_stairs_granite_loose"));
+        offerLesserDropsFromStairs(exporter, ModItems.SHARD_GRANITE, 6, ModBlocks.GRANITE_LOOSE_STAIRS, IdUtils.ofTE("shard_granite_from_stairs_granite_loose"));
         offerLesserDropsFromStairs(exporter, ModItems.SHARD_DIORITE, 6, ModBlocks.DIORITE_LOOSE_STAIRS, IdUtils.ofTE("shard_diorite_from_stairs_diorite_loose"));
         offerLesserDropsFromStairs(exporter, Items.BRICK, 6, ModBlocks.BRICKS_LOOSE_STAIRS, IdUtils.ofTE("brick_from_stairs_bricks_loose"));
         offerLesserDropsFromStairs(exporter, Items.NETHER_BRICK, 6, ModBlocks.NETHER_BRICKS_LOOSE_STAIRS, IdUtils.ofTE("nether_brick_from_stairs_nether_bricks_loose"));

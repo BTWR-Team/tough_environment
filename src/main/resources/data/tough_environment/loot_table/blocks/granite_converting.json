@@ -647,7 +647,7 @@
         {
           "condition": "minecraft:match_tool",
           "predicate": {
-            "items": "#c:modern_pickaxes"
+            "items": "#c:pickaxes_harvest_full_block"
           }
         }
       ]

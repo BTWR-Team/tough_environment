@@ -6,7 +6,6 @@
   "mixins": [
     "block.FluidBlockMixin",
     "ItemEntityMixin",
-    "PlayerEntityMixin",
     "ServerPlayerEntityMixin",
     "ToolMaterialsMixin",
     "block.FarmlandBlockMixin",

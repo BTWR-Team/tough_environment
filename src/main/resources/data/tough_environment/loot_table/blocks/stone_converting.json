@@ -187,25 +187,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "tough_environment:pile_gravel",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ],
-          "conditions": [
-            {
-              "condition": "minecraft:block_state_property",
-              "block": "tough_environment:stone_converting",
-              "properties": {
-                "break_level": "9"
-              }
-            }
-          ]
         }
       ],
       "conditions": [
@@ -531,7 +512,7 @@
         {
           "condition": "minecraft:match_tool",
           "predicate": {
-            "items": "#c:modern_pickaxes"
+            "items": "#c:pickaxes_harvest_full_block"
           }
         }
       ]

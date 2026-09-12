@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.HoeItem;
 import org.btwr.tough_environment.config.TEModConfig;
+import org.btwr.tough_environment.sound.ModSoundEvents;
 import org.btwr.tough_environment.util.DirectionalDropManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,7 @@ public class ToughEnvironmentMod implements ModInitializer {
         ModBlocks.register();
         ModItems.register();
         ModItemGroup.register();
+        ModSoundEvents.register();
         DirectionalDropManager.register();
 
         TEModLootConditionTypes.register();

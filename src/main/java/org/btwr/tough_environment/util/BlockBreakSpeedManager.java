@@ -10,6 +10,13 @@ import org.btwr.tough_environment.config.TEModConfig;
 
 public class BlockBreakSpeedManager {
 
+    /**
+     * Every {@link SpeedState} applies its modifier under this single id, so a player can never end
+     * up holding two of them at once. The flip side is that a state can only be recognised by the
+     * value of the modifier it applied - an id check alone matches any of them.
+     */
+    public static final Identifier SPEED_MODIFIER_ID = Identifier.of(ToughEnvironmentMod.MOD_ID, "generic_modifier");
+
     private static final BlockBreakSpeedManager INSTANCE = new BlockBreakSpeedManager();
 
     public static BlockBreakSpeedManager getInstance() {
@@ -54,7 +61,7 @@ public class BlockBreakSpeedManager {
 
         SpeedState(float modifier) {
             this.genericModifier = new EntityAttributeModifier(
-                    Identifier.of(ToughEnvironmentMod.MOD_ID, "generic_modifier"),
+                    SPEED_MODIFIER_ID,
                     modifier - 1.0,
                     EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             );

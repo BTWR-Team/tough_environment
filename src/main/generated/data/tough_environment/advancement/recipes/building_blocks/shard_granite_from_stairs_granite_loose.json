@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tough_environment:shard_andesite_from_stairs_granite_loose"
+        "recipe": "tough_environment:shard_granite_from_stairs_granite_loose"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "tough_environment:shard_andesite_from_stairs_granite_loose"
+      "tough_environment:shard_granite_from_stairs_granite_loose"
     ]
   }
 }

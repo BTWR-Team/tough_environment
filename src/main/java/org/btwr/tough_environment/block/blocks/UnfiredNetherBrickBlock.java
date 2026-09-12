@@ -16,6 +16,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import org.btwr.tough_environment.sound.ModSoundEvents;
 import org.jetbrains.annotations.Nullable;
 
 public class UnfiredNetherBrickBlock extends Block  {
@@ -66,7 +67,7 @@ public class UnfiredNetherBrickBlock extends Block  {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity) {
-            world.playSound(null, pos, SoundEvents.ENTITY_SLIME_ATTACK, SoundCategory.BLOCKS, ( 0.5F + 1.0F ) / 2.0F, 0.1F * 0.8F );
+            this.playDestroySound(world, pos);
             world.addBlockBreakParticles(pos, state);
             Block.dropStacks(state, world, pos);
             world.removeBlock(pos, false);
@@ -81,7 +82,7 @@ public class UnfiredNetherBrickBlock extends Block  {
             return;
         }
 
-        world.playSound(null, pos, SoundEvents.ENTITY_SLIME_ATTACK, SoundCategory.BLOCKS, ( 0.5F + 1.0F ) / 2.0F, 0.1F * 0.8F );
+        this.playDestroySound(world, pos);
         super.onStateReplaced(state, world, pos, newState, moved);
     }
 
@@ -109,6 +110,17 @@ public class UnfiredNetherBrickBlock extends Block  {
     @Override
     public boolean isShapeFullCube(BlockState state, BlockView world, BlockPos pos) {
         return false;
+    }
+
+    private void playDestroySound(World world, BlockPos pos) {
+        world.playSound(
+                null,
+                pos,
+                ModSoundEvents.UNFIRED_BRICK_DESTROYED,
+                SoundCategory.BLOCKS,
+                (0.5F + 1.0F) / 2.0F,
+                0.1F * 0.8F
+        );
     }
 
 }

@@ -2,14 +2,12 @@ package org.btwr.tough_environment.datagen.loot_table;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import org.btwr.tough_environment.block.ModBlocks;
 import org.btwr.tough_environment.datagen.loot_table.util.LootConditions;
 import org.btwr.tough_environment.item.ModItems;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 
@@ -249,7 +247,6 @@ public class TELootTableProvider extends BaseLootTableProvider {
         addDrop(ModBlocks.NETHER_BRICK_UNFIRED, ModItems.NETHER_SLUDGE);
 
         // TODO: Add loot tables for Broken stone blocks, converting stone blocks, slab blocks and the stair blocks.
-
     }
 
 }

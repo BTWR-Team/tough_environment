@@ -1,0 +1,29 @@
+{
+  "stone_cracking": {
+    "subtitle": "subtitles.tough_environment.stone_cracking",
+    "sounds": [
+      {
+        "name": "minecraft:block.anvil.land",
+        "type": "event"
+      }
+    ]
+  },
+  "apply_mortar": {
+    "subtitle": "subtitles.tough_environment.apply_mortar",
+    "sounds": [
+      {
+        "name": "minecraft:entity.slime.attack",
+        "type": "event"
+      }
+    ]
+  },
+  "unfired_brick_destroyed": {
+    "subtitle": "subtitles.tough_environment.unfired_brick_destroyed",
+    "sounds": [
+      {
+        "name": "minecraft:entity.slime.attack",
+        "type": "event"
+      }
+    ]
+  }
+}

@@ -6,11 +6,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.btwr.shared_library.api.event.ServerChunkGenerateEvents;
 import org.btwr.tough_environment.block.ModBlocks;
+import org.btwr.tough_environment.sound.ModSoundEvents;
 import org.jetbrains.annotations.Nullable;
 import org.btwr.tough_environment.block.BlockBreakHandler;
 
@@ -38,7 +38,7 @@ public class TEModEvents {
             handler.setStateForConvertedStone(world, pos, state, player);
 
             if (handler.shouldPlayCrackingSound(state, player.getMainHandStack()) && !player.isCreative()) {
-                world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS,
+                world.playSound(null, pos, ModSoundEvents.STONE_CRACKING, SoundCategory.BLOCKS,
                         0.5F, 1.75F + world.random.nextFloat() * 0.25F
                 );
             }

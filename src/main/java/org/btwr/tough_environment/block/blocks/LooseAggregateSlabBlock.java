@@ -126,8 +126,7 @@ public class LooseAggregateSlabBlock extends FallingBlock implements Waterloggab
             //return blockState.with(TYPE, SlabType.DOUBLE).with(WATERLOGGED, false);
 
             return getReplacementBlockState(blockState.getBlock());
-        }
-        else {
+        } else {
             // Otherwise, handle placement based on the direction and hit position
             boolean isTopHalf = ctx.getHitPos().y - blockPos.getY() > 0.5;
 
@@ -152,16 +151,13 @@ public class LooseAggregateSlabBlock extends FallingBlock implements Waterloggab
                 Direction direction = context.getSide();
                 if (slabType == SlabType.BOTTOM) {
                     return direction == Direction.UP || bl && direction.getAxis().isHorizontal();
-                }
-                else {
+                } else {
                     return direction == Direction.DOWN || !bl && direction.getAxis().isHorizontal();
                 }
-            }
-            else {
+            } else {
                 return true;
             }
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -182,9 +178,10 @@ public class LooseAggregateSlabBlock extends FallingBlock implements Waterloggab
     }
 
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState,
-                                                WorldAccess world, BlockPos pos, BlockPos neighborPos)
-    {
+    public BlockState getStateForNeighborUpdate(
+            BlockState state, Direction direction, BlockState neighborState,
+            WorldAccess world, BlockPos pos, BlockPos neighborPos
+    ) {
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }

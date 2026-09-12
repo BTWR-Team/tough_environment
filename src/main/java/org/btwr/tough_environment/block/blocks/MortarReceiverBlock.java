@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.tick.OrderedTick;
 import net.minecraft.world.tick.TickPriority;
 import org.btwr.tough_environment.block.ModBlocks;
+import org.btwr.tough_environment.sound.ModSoundEvents;
 import org.btwr.tough_environment.tag.ModTags;
 import org.btwr.tough_environment.util.BlockMortarMapper;
 
@@ -48,12 +49,15 @@ public class MortarReceiverBlock extends FallingBlock {
 
         if (hasMortaredNeighbor) {
             // Create an OrderedTick for the block
-            OrderedTick<Block> orderedTick = new OrderedTick<>(state.getBlock(), pos,
-                    world.getTime() + TACKY_FALLING_BLOCK_TICK_RATE, TickPriority.NORMAL, 0
+            OrderedTick<Block> orderedTick = new OrderedTick<>(
+                    state.getBlock(),
+                    pos,
+                    world.getTime() + TACKY_FALLING_BLOCK_TICK_RATE,
+                    TickPriority.NORMAL,
+                    0
             );
             world.getBlockTickScheduler().scheduleTick(orderedTick);
-        }
-        else {
+        } else {
             // Schedule the normal fall tick (default for falling blocks)
             super.onBlockAdded(state, world, pos, oldState, notify);
         }
@@ -92,13 +96,11 @@ public class MortarReceiverBlock extends FallingBlock {
                 if (block == ModBlocks.COBBLED_DEEPSLATE_LOOSE) {
                     world.setBlockState(pos, ModBlocks.LAVA_FILLED_COBBLED_DEEPSLATE_LOOSE.getDefaultState());
                     return;
-
                 }
 
                 if (block == ModBlocks.STONE_BRICKS_LOOSE) {
                     world.setBlockState(pos, ModBlocks.LAVA_FILLED_STONE_BRICKS_LOOSE.getDefaultState());
                     return;
-
                 }
 
                 if (block == ModBlocks.DEEPSLATE_BRICKS_LOOSE) {
@@ -122,7 +124,7 @@ public class MortarReceiverBlock extends FallingBlock {
 
         if (mortaredState != null) {
             world.setBlockState(pos, mortaredState, Block.NOTIFY_ALL);
-            world.playSound(null, pos, SoundEvents.ENTITY_SLIME_ATTACK, SoundCategory.BLOCKS);
+            world.playSound(null, pos, ModSoundEvents.APPLY_MORTAR, SoundCategory.BLOCKS);
         }
 
         // Reduce item stack size if not in creative mode

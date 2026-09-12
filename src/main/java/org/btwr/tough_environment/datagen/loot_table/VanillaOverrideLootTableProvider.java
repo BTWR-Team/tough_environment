@@ -64,6 +64,20 @@ public class VanillaOverrideLootTableProvider extends BaseLootTableProvider {
                 )
         );
 
+        this.generateDirtLikeBlockDrops();
+    }
+
+    /**
+     * Podzol, mycelium, coarse dirt and dirt path are hand-written under
+     * {@code resources/data/minecraft/loot_table/blocks}; adding them here too would give
+     * processResources two copies of the same file. Rooted dirt was the one member of the family
+     * without a table, so it kept vanilla behaviour and never broke down into piles.
+     */
+    private void generateDirtLikeBlockDrops() {
+        // Vanilla drops rooted dirt itself, so that is what a proper shovel keeps giving
+        addDrop(Blocks.ROOTED_DIRT,
+                dropsForLooseAggregate(Blocks.ROOTED_DIRT, Blocks.ROOTED_DIRT, LootConditions.WITH_SHOVEL_FULLY_HARVESTS, ModItems.PILE_DIRT, 6)
+        );
     }
 
     private void generateStoneLikeBlockDrops() {

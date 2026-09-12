@@ -95,5 +95,8 @@
   "item.tough_environment.stone_brick_1": "Mantlestone Brick",
   "item.tough_environment.stone_brick_2": "Deepslate Brick",
   "itemgroup.group_te": "Tough Environment!",
+  "subtitles.tough_environment.apply_mortar": "Mortar applied",
+  "subtitles.tough_environment.stone_cracking": "Stone cracks",
+  "subtitles.tough_environment.unfired_brick_destroyed": "Unfired brick destroyed",
   "title.tough_environment.config": "Tough Environment Configuration Menu"
 }
